@@ -3,51 +3,49 @@ package es.studium.prgp;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.awt.Panel;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
-public class ConsultaCliente extends Frame implements WindowListener, ActionListener{
+public class ConsultaVideojuegos extends Frame implements WindowListener, ActionListener{
 
-	private static final long serialVersionUID = 1L;	
-	
+	private static final long serialVersionUID = 1L;
+
 	Panel panel = new Panel();
 	
-	ArrayList<String> listaClientesTitulo = new ArrayList<>();
-	ArrayList<String> listaClientesBusqueda = new ArrayList<>();
-	String nombreTabla="clientes";
+	ArrayList<String> listaVideojuegosTitulo = new ArrayList<>();
+	ArrayList<String> listaVideojuegosBusqueda = new ArrayList<>();
+	String nombreTabla="videojuegos";
 	
-	public ConsultaCliente() {
+	public ConsultaVideojuegos() {
 		setSize(450,350);
-		setTitle("Consulta Cliente");
+		setTitle("Consulta Videojuegos");
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
 		
-		listaClientesTitulo.add("IdCliente");
-		listaClientesBusqueda.add("idCliente");
-		listaClientesTitulo.add("Nombre");
-		listaClientesBusqueda.add("nombreCliente");
-		listaClientesTitulo.add("Fecha de Nacimiento");
-		listaClientesBusqueda.add("fechaNacimientoCliente");
-		listaClientesTitulo.add("Puntos");
-		listaClientesBusqueda.add("puntosCliente");
+		listaVideojuegosTitulo.add("IdVideojuego");
+		listaVideojuegosBusqueda.add("idVideojuego");
+		listaVideojuegosTitulo.add("Nombre");
+		listaVideojuegosBusqueda.add("nombeVideojuego");
+		listaVideojuegosTitulo.add("Genero");
+		listaVideojuegosBusqueda.add("generoVideojuego");
+		listaVideojuegosTitulo.add("Plataforma");
+		listaVideojuegosBusqueda.add("plataformaVideojuego");
 		//TablaConsulta clientes 
-		TablaConsulta clientes=new TablaConsulta();
+		TablaConsulta videojuegos=new TablaConsulta();
 		add(panel);
 		panel.setLayout(new GridLayout(1,1));
-		panel.add(clientes.TablaConsulta(listaClientesTitulo, listaClientesBusqueda,nombreTabla));
+		panel.add(videojuegos.TablaConsulta(listaVideojuegosTitulo, listaVideojuegosBusqueda,nombreTabla));
 		//panel.add(clientes);
 		addWindowListener(this);	
 		setVisible(true);
 	}
 
 	public static void main(String[] args) {
-		new ConsultaCliente();
+		new ConsultaVideojuegos();
 
 	}
 
@@ -94,5 +92,4 @@ public class ConsultaCliente extends Frame implements WindowListener, ActionList
 		// TODO Auto-generated method stub
 
 	}
-
 }

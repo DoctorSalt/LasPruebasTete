@@ -33,7 +33,6 @@ public class TablaConsulta {
 		Connection connection = null;
 		java.sql.Statement statement = null;
 		ResultSet rs = null;
-		System.out.println("entro");
 		try
 		{
 			//Cargar los controladores para el acceso a la BD
@@ -55,9 +54,7 @@ public class TablaConsulta {
 				}
 				palabro= palabro+", "+listaClientesBusquedaR.get(i);					
 			}
-			System.out.println(palabro);
 			sentencia = "Select "+palabro+" from tiendaPractica."+nombreTablaR+";";
-			System.out.println(sentencia);
 			rs = statement.executeQuery (sentencia);
 			Object [] titulo = new Object[tamano];
 			for(int i=0; i<tamano;i++) {

@@ -3,51 +3,57 @@ package es.studium.prgp;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.awt.Panel;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
-public class ConsultaCliente extends Frame implements WindowListener, ActionListener{
+public class ConsultaTrabajadores extends Frame implements WindowListener, ActionListener{
+	private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;	
-	
 	Panel panel = new Panel();
 	
-	ArrayList<String> listaClientesTitulo = new ArrayList<>();
-	ArrayList<String> listaClientesBusqueda = new ArrayList<>();
-	String nombreTabla="clientes";
+	ArrayList<String> listaTrabajadoresTitulo = new ArrayList<>();
+	ArrayList<String> listaTrabajadoresBusqueda = new ArrayList<>();
+	String nombreTabla="trabajadores";
 	
-	public ConsultaCliente() {
+	public ConsultaTrabajadores() {
 		setSize(450,350);
-		setTitle("Consulta Cliente");
+		setTitle("Consulta Trabajadores");
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
 		
-		listaClientesTitulo.add("IdCliente");
-		listaClientesBusqueda.add("idCliente");
-		listaClientesTitulo.add("Nombre");
-		listaClientesBusqueda.add("nombreCliente");
-		listaClientesTitulo.add("Fecha de Nacimiento");
-		listaClientesBusqueda.add("fechaNacimientoCliente");
-		listaClientesTitulo.add("Puntos");
-		listaClientesBusqueda.add("puntosCliente");
+		listaTrabajadoresTitulo.add("IdTrabajador");
+		listaTrabajadoresBusqueda.add("idTrabajador");
+		listaTrabajadoresTitulo.add("Nombre");
+		listaTrabajadoresBusqueda.add("nombreTrabajador");
+		listaTrabajadoresTitulo.add("Apellidos");
+		listaTrabajadoresBusqueda.add("apellidosTrabajador");
+		listaTrabajadoresTitulo.add("Nomina");
+		listaTrabajadoresBusqueda.add("nominaTrabajador");
+		listaTrabajadoresTitulo.add("Tipo de Contrato");
+		listaTrabajadoresBusqueda.add("tipoContratoTrabajador");
+		listaTrabajadoresTitulo.add("Horas Semanales");
+		listaTrabajadoresBusqueda.add("horasTrabajador");
+		listaTrabajadoresTitulo.add("IdTiendaFK1");
+		listaTrabajadoresBusqueda.add("idTiendaFK1");
+		listaTrabajadoresTitulo.add("JefeDeFK1");
+		listaTrabajadoresBusqueda.add("jefeDeFK1");
+		
 		//TablaConsulta clientes 
-		TablaConsulta clientes=new TablaConsulta();
+		TablaConsulta trabajadores=new TablaConsulta();
 		add(panel);
 		panel.setLayout(new GridLayout(1,1));
-		panel.add(clientes.TablaConsulta(listaClientesTitulo, listaClientesBusqueda,nombreTabla));
+		panel.add(trabajadores.TablaConsulta(listaTrabajadoresTitulo, listaTrabajadoresBusqueda,nombreTabla));
 		//panel.add(clientes);
 		addWindowListener(this);	
 		setVisible(true);
 	}
 
 	public static void main(String[] args) {
-		new ConsultaCliente();
+		new ConsultaTrabajadores();
 
 	}
 
@@ -94,5 +100,4 @@ public class ConsultaCliente extends Frame implements WindowListener, ActionList
 		// TODO Auto-generated method stub
 
 	}
-
 }

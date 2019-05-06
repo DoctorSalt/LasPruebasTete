@@ -3,51 +3,46 @@ package es.studium.prgp;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.Label;
 import java.awt.Panel;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
-public class ConsultaCliente extends Frame implements WindowListener, ActionListener{
-
-	private static final long serialVersionUID = 1L;	
+public class ConsultaFactura extends Frame implements WindowListener, ActionListener{
+private static final long serialVersionUID = 1L;	
 	
 	Panel panel = new Panel();
 	
-	ArrayList<String> listaClientesTitulo = new ArrayList<>();
-	ArrayList<String> listaClientesBusqueda = new ArrayList<>();
-	String nombreTabla="clientes";
+	ArrayList<String> listaFacturasTitulo = new ArrayList<>();
+	ArrayList<String> listaFacturasBusqueda = new ArrayList<>();
+	String nombreTabla="facturas";
 	
-	public ConsultaCliente() {
+	public ConsultaFactura() {
 		setSize(450,350);
-		setTitle("Consulta Cliente");
+		setTitle("Consulta Facturas");
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
 		
-		listaClientesTitulo.add("IdCliente");
-		listaClientesBusqueda.add("idCliente");
-		listaClientesTitulo.add("Nombre");
-		listaClientesBusqueda.add("nombreCliente");
-		listaClientesTitulo.add("Fecha de Nacimiento");
-		listaClientesBusqueda.add("fechaNacimientoCliente");
-		listaClientesTitulo.add("Puntos");
-		listaClientesBusqueda.add("puntosCliente");
+		listaFacturasTitulo.add("IdFactura");
+		listaFacturasBusqueda.add("idFactura");
+		listaFacturasTitulo.add("Fecha de Compra");
+		listaFacturasBusqueda.add("fechaCompra");
+		listaFacturasTitulo.add("IdClienteFK2");
+		listaFacturasBusqueda.add("idClienteFK2");
 		//TablaConsulta clientes 
-		TablaConsulta clientes=new TablaConsulta();
+		TablaConsulta facturas=new TablaConsulta();
 		add(panel);
 		panel.setLayout(new GridLayout(1,1));
-		panel.add(clientes.TablaConsulta(listaClientesTitulo, listaClientesBusqueda,nombreTabla));
+		panel.add(facturas.TablaConsulta(listaFacturasTitulo, listaFacturasBusqueda,nombreTabla));
 		//panel.add(clientes);
 		addWindowListener(this);	
 		setVisible(true);
 	}
 
 	public static void main(String[] args) {
-		new ConsultaCliente();
+		new ConsultaFactura();
 
 	}
 
@@ -94,5 +89,4 @@ public class ConsultaCliente extends Frame implements WindowListener, ActionList
 		// TODO Auto-generated method stub
 
 	}
-
 }
