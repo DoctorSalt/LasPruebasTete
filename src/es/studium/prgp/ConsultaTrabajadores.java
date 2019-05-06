@@ -1,5 +1,6 @@
 package es.studium.prgp;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -26,7 +27,7 @@ public class ConsultaTrabajadores extends Frame implements WindowListener, Actio
 		setSize(800,250);
 		setTitle("Consulta Trabajadores");
 		setLocationRelativeTo(null);
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
 		
 		listaTrabajadoresTitulo.add("IdTrabajador");
 		listaTrabajadoresBusqueda.add("idTrabajador");
@@ -47,11 +48,9 @@ public class ConsultaTrabajadores extends Frame implements WindowListener, Actio
 		
 		//TablaConsulta clientes 
 		TablaConsulta trabajadores=new TablaConsulta();
-		add(panel);
-		panel.setLayout(new GridLayout(1,1));
 		JScrollPane tablaResultante=new JScrollPane(trabajadores.TablaConsulta(listaTrabajadoresTitulo, listaTrabajadoresBusqueda,nombreTabla));
 		tablaResultante.setPreferredSize(new Dimension(750, 200));
-		panel.add(tablaResultante);
+		add(tablaResultante, BorderLayout.CENTER);
 		//panel.add(clientes);
 		addWindowListener(this);	
 		setVisible(true);

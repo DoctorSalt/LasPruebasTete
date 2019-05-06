@@ -1,5 +1,6 @@
 package es.studium.prgp;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -26,7 +27,7 @@ private static final long serialVersionUID = 1L;
 		setSize(500,250);
 		setTitle("Consulta Facturas");
 		setLocationRelativeTo(null);
-		setLayout(new FlowLayout());
+		setLayout(new BorderLayout());
 		
 		listaFacturasTitulo.add("IdFactura");
 		listaFacturasBusqueda.add("idFactura");
@@ -36,11 +37,9 @@ private static final long serialVersionUID = 1L;
 		listaFacturasBusqueda.add("idClienteFK2");
 		//TablaConsulta clientes 
 		TablaConsulta facturas=new TablaConsulta();
-		add(panel);
-		panel.setLayout(new GridLayout(1,1));
 		JScrollPane tablaResultante=new JScrollPane(facturas.TablaConsulta(listaFacturasTitulo, listaFacturasBusqueda,nombreTabla));
 		tablaResultante.setPreferredSize(new Dimension(450, 200));
-		panel.add(tablaResultante);
+		add(tablaResultante, BorderLayout.CENTER);
 		//panel.add(clientes);
 		addWindowListener(this);	
 		setVisible(true);
