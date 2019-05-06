@@ -1,5 +1,6 @@
 package es.studium.prgp;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -9,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+
+import javax.swing.JScrollPane;
 
 public class ConsultaFactura extends Frame implements WindowListener, ActionListener{
 private static final long serialVersionUID = 1L;	
@@ -20,7 +23,7 @@ private static final long serialVersionUID = 1L;
 	String nombreTabla="facturas";
 	
 	public ConsultaFactura() {
-		setSize(450,350);
+		setSize(500,250);
 		setTitle("Consulta Facturas");
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
@@ -35,7 +38,9 @@ private static final long serialVersionUID = 1L;
 		TablaConsulta facturas=new TablaConsulta();
 		add(panel);
 		panel.setLayout(new GridLayout(1,1));
-		panel.add(facturas.TablaConsulta(listaFacturasTitulo, listaFacturasBusqueda,nombreTabla));
+		JScrollPane tablaResultante=new JScrollPane(facturas.TablaConsulta(listaFacturasTitulo, listaFacturasBusqueda,nombreTabla));
+		tablaResultante.setPreferredSize(new Dimension(450, 200));
+		panel.add(tablaResultante);
 		//panel.add(clientes);
 		addWindowListener(this);	
 		setVisible(true);

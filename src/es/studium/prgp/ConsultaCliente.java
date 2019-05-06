@@ -1,5 +1,6 @@
 package es.studium.prgp;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -12,6 +13,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
+import javax.swing.JScrollPane;
+
 public class ConsultaCliente extends Frame implements WindowListener, ActionListener{
 
 	private static final long serialVersionUID = 1L;	
@@ -22,8 +25,9 @@ public class ConsultaCliente extends Frame implements WindowListener, ActionList
 	ArrayList<String> listaClientesBusqueda = new ArrayList<>();
 	String nombreTabla="clientes";
 	
+
 	public ConsultaCliente() {
-		setSize(450,350);
+		setSize(600,250);
 		setTitle("Consulta Cliente");
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
@@ -40,7 +44,9 @@ public class ConsultaCliente extends Frame implements WindowListener, ActionList
 		TablaConsulta clientes=new TablaConsulta();
 		add(panel);
 		panel.setLayout(new GridLayout(1,1));
-		panel.add(clientes.TablaConsulta(listaClientesTitulo, listaClientesBusqueda,nombreTabla));
+		JScrollPane tablaResultante=new JScrollPane(clientes.TablaConsulta(listaClientesTitulo, listaClientesBusqueda,nombreTabla));
+		tablaResultante.setPreferredSize(new Dimension(550, 200));
+		panel.add(tablaResultante);		
 		//panel.add(clientes);
 		addWindowListener(this);	
 		setVisible(true);

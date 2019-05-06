@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -44,9 +45,13 @@ public class TablaConsulta {
 			statement = connection.createStatement();
 			//Crear un objeto ResultSet para guardar lo obtenido y ejecutar la sentencia SQL
 
+			Vector columnNames=new Vector();
+			
 			for(int i=0;i<tamano;i++) {
 				modelo.addColumn(listaClientesTituloR.get(i));
-			}			
+				columnNames.addElement(listaClientesTituloR.get(i));				
+			}	
+			modelo.setColumnIdentifiers(columnNames);
 			for(int i=0; i<tamano;i++) 
 			{
 				if(i==0) {
@@ -56,11 +61,6 @@ public class TablaConsulta {
 			}
 			sentencia = "Select "+palabro+" from tiendaPractica."+nombreTablaR+";";
 			rs = statement.executeQuery (sentencia);
-			Object [] titulo = new Object[tamano];
-			for(int i=0; i<tamano;i++) {
-			titulo[i]= listaClientesTituloR.get(i);
-			}
-			modelo.addRow(titulo);
 			while(rs.next()) {
 				Object [] fila = new Object[tamano];
 				for(int i=0; i<tamano;i++) {

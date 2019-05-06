@@ -1,5 +1,6 @@
 package es.studium.prgp;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -9,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+
+import javax.swing.JScrollPane;
 
 public class ConsultaTrabajadores extends Frame implements WindowListener, ActionListener{
 	private static final long serialVersionUID = 1L;
@@ -20,7 +23,7 @@ public class ConsultaTrabajadores extends Frame implements WindowListener, Actio
 	String nombreTabla="trabajadores";
 	
 	public ConsultaTrabajadores() {
-		setSize(450,350);
+		setSize(800,250);
 		setTitle("Consulta Trabajadores");
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
@@ -33,9 +36,9 @@ public class ConsultaTrabajadores extends Frame implements WindowListener, Actio
 		listaTrabajadoresBusqueda.add("apellidosTrabajador");
 		listaTrabajadoresTitulo.add("Nomina");
 		listaTrabajadoresBusqueda.add("nominaTrabajador");
-		listaTrabajadoresTitulo.add("Tipo de Contrato");
+		listaTrabajadoresTitulo.add("Tipo Contrato");
 		listaTrabajadoresBusqueda.add("tipoContratoTrabajador");
-		listaTrabajadoresTitulo.add("Horas Semanales");
+		listaTrabajadoresTitulo.add("Horas Semanal");
 		listaTrabajadoresBusqueda.add("horasTrabajador");
 		listaTrabajadoresTitulo.add("IdTiendaFK1");
 		listaTrabajadoresBusqueda.add("idTiendaFK1");
@@ -46,7 +49,9 @@ public class ConsultaTrabajadores extends Frame implements WindowListener, Actio
 		TablaConsulta trabajadores=new TablaConsulta();
 		add(panel);
 		panel.setLayout(new GridLayout(1,1));
-		panel.add(trabajadores.TablaConsulta(listaTrabajadoresTitulo, listaTrabajadoresBusqueda,nombreTabla));
+		JScrollPane tablaResultante=new JScrollPane(trabajadores.TablaConsulta(listaTrabajadoresTitulo, listaTrabajadoresBusqueda,nombreTabla));
+		tablaResultante.setPreferredSize(new Dimension(750, 200));
+		panel.add(tablaResultante);
 		//panel.add(clientes);
 		addWindowListener(this);	
 		setVisible(true);

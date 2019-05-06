@@ -1,5 +1,6 @@
 package es.studium.prgp;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -9,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+
+import javax.swing.JScrollPane;
 
 public class ConsultaVideojuegos extends Frame implements WindowListener, ActionListener{
 
@@ -21,7 +24,7 @@ public class ConsultaVideojuegos extends Frame implements WindowListener, Action
 	String nombreTabla="videojuegos";
 	
 	public ConsultaVideojuegos() {
-		setSize(450,350);
+		setSize(600,250);
 		setTitle("Consulta Videojuegos");
 		setLocationRelativeTo(null);
 		setLayout(new FlowLayout());
@@ -38,7 +41,9 @@ public class ConsultaVideojuegos extends Frame implements WindowListener, Action
 		TablaConsulta videojuegos=new TablaConsulta();
 		add(panel);
 		panel.setLayout(new GridLayout(1,1));
-		panel.add(videojuegos.TablaConsulta(listaVideojuegosTitulo, listaVideojuegosBusqueda,nombreTabla));
+		JScrollPane tablaResultante=new JScrollPane(videojuegos.TablaConsulta(listaVideojuegosTitulo, listaVideojuegosBusqueda,nombreTabla));
+		tablaResultante.setPreferredSize(new Dimension(550, 200));
+		panel.add(tablaResultante);
 		//panel.add(clientes);
 		addWindowListener(this);	
 		setVisible(true);
